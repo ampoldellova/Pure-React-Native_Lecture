@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, ScrollView, FlatList, View } from 'react-
 import { Badge, Text, VStack, Divider, HStack } from 'native-base';
 
 const CategoryFilter = (props) => {
+    console.log(props.categories)
     return (
         <ScrollView
             bounces={true}
@@ -15,7 +16,8 @@ const CategoryFilter = (props) => {
                         key={1}
                         onPress={() => {
                             props.categoryFilter('all'), props.setActive(-1)
-                        }} >
+                        }}
+                    >
                         <Badge style={[styles.center, { margin: 4 },
                         props.active === -1 ? styles.active : styles.inactive]} colorScheme="info" >
                             <Text style={{ color: 'black' }}>all</Text>
@@ -25,7 +27,7 @@ const CategoryFilter = (props) => {
                         <TouchableOpacity
                             key={item.$_id}
                             onPress={() => {
-                                props.categoryFilter(item.$oid),
+                                props.categoryFilter(item._id.$oid),
                                     props.setActive(props.categories.indexOf(item))
                             }}
                         >
